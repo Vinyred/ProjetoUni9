@@ -97,6 +97,7 @@
                     console.log(newTask);
                     input.value = "";
                     listNum++;
+                    location.reload();
                 })
                 .catch(error => console.error(error));
             }
@@ -180,16 +181,39 @@
         /*Alerta de Exclusão de Tarefa*/
         deleteList = (listId) => {
             let current = document.getElementById(`text${listId}`).innerHTML;
-            let deleteComfirm = confirm(`Tem certeza que deseja excluir a Tarefa? ${current}`);
-            if (deleteComfirm) {
-                let p = document.getElementById("list")
-                let c = document.getElementById(`list${listId}`);
-                p.removeChild(c);
+            let deleteConfirm = confirm(`Tem certeza que deseja excluir a Tarefa? ${current}`);
+            const url = 'https://todolist-api.edsonmelo.com.br/api/task/delete/';
+            const headers = { 'Content-type': 'application/json', 'Authorization': token };
+            const pay_load = {
+                id: listId
+            };
+            
+            if (deleteConfirm) {
+          
+              fetch(url, {
+                method: 'DELETE',
+                headers: headers,
+                body: JSON.stringify(pay_load)
+              })
+                .then(response => {
+                  if (!response.ok) {
+                    throw new Error(response.status);
+                  }
+                  return response.json();
+                })
+                .then(data => {
+                  let p = document.getElementById("list")
+                  let c = document.getElementById(`list${listId}`);
+                  p.removeChild(c);
+                })
+                .catch(error => console.error(error));
+                console.log(pay_load);
+                location.reload();
             }
             else {
-                console.log("Tarefa Excluida");
+              console.log("Tarefa não excluída");
             }
-        };
+          }
 
 
         function logout(){
