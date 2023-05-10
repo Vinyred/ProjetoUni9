@@ -27,7 +27,7 @@
                 
             </form>
     
-            <button onclick="editar()" type="submit" value="enviar-cadastro" id="btn-logincad">
+            <button onclick="editar()" type="button" value="enviar-cadastro" id="btn-logincad">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -45,22 +45,5 @@
 
 <script>
     
-function carregara() {
-let token = localStorage.getItem('token');
-let nomeg = localStorage.getItem('nameg');
-let emailg = localStorage.getItem('emailg');
-let usernameg = localStorage.getItem('usernameg');
-let passwordg = localStorage.getItem('passwordg');
-
-let nome = document.getElementById('nomecad')
-let email = document.getElementById('emailcad')
-let username = document.getElementById('nomescad')
-let password = document.getElementById('senhacad')
-
-nome.value = nomeg;
-email.value = emailg;
-username.value = usernameg;
-password.value = passwordg;
-}
 </script>
 </html>
