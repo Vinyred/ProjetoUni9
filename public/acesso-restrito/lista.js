@@ -36,7 +36,7 @@
                     </div>
                     <div class="col-4">
                         <i class=" fa fa-trash" style="cursor:pointer;" onclick="deleteList(${data[i].id})"></i>
-                        <i class=" fa fa-thin fa-pencil" style="cursor:pointer;" onclick="editList(${data[i].id, data[i].name, data[i].realized})"></i>
+                        <i class="fa fa-thin fa-pencil" style="cursor:pointer;" onclick="editList(${data[i].id}, '${data[i].name}', ${data[i].realized})"></i>
                     </div>                  
                     </div>    
                     </li> `;
@@ -130,49 +130,43 @@
             }
         }
         /*Alerta de Edição de Tarefa*/
-            editList = (listId,listName,listDone) => {
-                        let currentText = document.getElementById(`text${listId}`);
-                        let newText = prompt("Deseja alterar o nome da Tarefa?", currentText.innerHTML);
-                        const pay_load = {
-                            'id': listId,
-                            'name': listName,
-                            'realized': listDone,
-                          };
-
-                        if (filterList(newText)) {
-                          fetch('https://todolist-api.edsonmelo.com.br/api/task/update/', {
-                            method: 'PUT',
-                            headers: {
-                              'Content-Type': 'application/json',
-                              'Authorization': token
-                            },
-                            body: JSON.stringify(pay_load),
-                          })
-                          .then(response => {
-                            // Aqui devem ser realizados os tratamentos no caso de ocorrerem erros
-                            response.json().then(data => {
-                              if ('message' in data) {
-                                // Gera uma mensagem de erro com o valor retornado pela API ou conexão
-                                throw new Error(data.message);
-                              } else {
-                                // Mostra os dados retornados já convertidos
-                                console.log(data);
-                          
-                                // Mostra os dados de forma isolada para cada variável recebida na requisição
-                                console.log('Id: ', data.id);
-                                console.log('UserID: ', data.userId);
-                                console.log('Name: ', data.name);
-                                console.log('Date: ', data.date);
-                                console.log('Realized: ', data.realized);
-                              }
-                            }).catch(error => {
-                              console.log(error);
-                            });
-                          }).catch(error => {
-                            console.log(error);
-                          });
-                        }
+        editList = (listId, listName, listDone) => {
+            let current = document.getElementById(`text${listId}`).innerHTML;
+            let newText = prompt(`Deseja alterar o nome da Tarefa? ${current}`);
+            const url = 'https://todolist-api.edsonmelo.com.br/api/task/update/';
+            const headers = { 'Content-type': 'application/json', 'Authorization': token };
+            const pay_load = {
+                id: listId,
+                name: newText,
+                realized: listDone,
+            };
+        
+            if (filterList(newText)) {
+                fetch(url, {
+                    method: 'PUT',
+                    headers: headers,
+                    body: JSON.stringify(pay_load),
+                })
+                .then(response => {
+                    if (!response.ok) {
+                      throw new Error(response.status);
                     }
+                    return response.json();
+                  })
+                  .then(data => {
+                    let p = document.getElementById("list")
+                    let c = document.getElementById(`list${listId}`);
+                    p.removeChild(c);
+                  })
+                  .catch(error => console.error(error));
+                  location.reload();
+                  console.log(pay_load);
+              }
+              else {
+                console.log("Tarefa não excluída");
+              }
+            }
+        
                           
                           
                           
