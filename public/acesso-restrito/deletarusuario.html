@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pagina do acesso</title>
+    <link rel="stylesheet" href="css/acesso.css">
+    <script src="js/deletar.js"></script>
+    <script src="js/editar.js"></script>
+</head>
+
+<body class="bg-dark">
+    <header>
+
+        <div id="container-login">
+            <h1>Deletar Usuário</h1>
+            <form id="logincad">
+                <h3 class="txt-excluir">Você solicitou a exclusão da sua conta. Tem certeza de que deseja prosseguir com
+                    essa ação? Se você
+                    excluir sua conta, todas as informações associadas a ela serão permanentemente apagadas e não
+                    poderão ser recuperadas.
+
+                    Por favor, confirme se você realmente deseja excluir sua conta digitando os seus dados. Se você não
+                    deseja excluir sua conta, simplesmente ignore esta mensagem.</h2>
+                    <label for="nomes">Nome</label>
+                    <input type="text" name="nomes" id="nomes" placeholder="Digite seu nome" required>
+                    <label for="senha">Senha</label>
+                    <input type="password" name="senha" id="senha" placeholder="Digite sua senha" required>
+
+
+
+            </form>
+
+            <button class="btn-excluir" onclick="deletarUsuario()">Excluir Usuário</button>
+            <button class="btn-cancel" onclick="cancelar()">Cancelar</button>
+
+
+        </div>
+
+    </header>
+
+    <script>
+        var username = document.getElementById('nomes')
+        var password = document.getElementById('senha')
+
+
+    </script>
+</body>
+
+</html>

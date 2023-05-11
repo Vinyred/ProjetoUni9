@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,27 +9,31 @@
     <link rel="stylesheet" href="css/acesso.css">
     <script src="js/editar.js"></script>
 </head>
-<body>
 
+<body class="bg-dark">
+    <button class="voltar" onclick="voltar()">< Voltar</button>
     <header>
-
+        
         <div id="container-login">
             <h1>Editar Dados</h1>
             <form id="logincad">
+               
                 <label for="usernamecad">Nome de Usuário</label>
                 <input type="text" name="usernamecad" id="usernamecad" placeholder="Digite o nome" required>
                 <label for="newusernamecad">Novo Nome de Usuário</label>
-                <input type="text" name="newusernamecad" id="newusernamecad" placeholder="Digite o nome de Usuário" required>
+                <input type="text" name="newusernamecad" id="newusernamecad" placeholder="Digite o nome de Usuário"
+                    required>
                 <label for="senhacad">Senha</label>
                 <input type="password" name="senhacad" id="senhacad" placeholder="Digite a senha" required>
                 <label for="novasenhacad">Nova Senha</label>
                 <input type="password" name="novasenhacad" id="novasenhacad" placeholder="Digite a nova senha" required>
                 <label for="confirmarnovasenhacad">Confirmar Senha</label>
-                <input type="password" name="confirmarnovasenhacad" id="confirmarnovasenhacad" placeholder="Confirme a nova senha" required>
- 
-                
+                <input type="password" name="confirmarnovasenhacad" id="confirmarnovasenhacad"
+                    placeholder="Confirme a nova senha" required>
+
+
             </form>
-    
+
             <button onclick="editaruser()" type="button" value="enviar-cadastro" id="btn-logincad">
                 <span></span>
                 <span></span>
@@ -36,11 +41,11 @@
                 <span></span>
                 Salvar
             </button>
-    
+
         </div>
-    
+
     </header>
-    
+
     <script>
         var token = localStorage.getItem("token");
         var nomeg = localStorage.getItem("nameg");
@@ -52,7 +57,8 @@
         var username = document.getElementById('nomescad')
         var password = document.getElementById('senhacad')
 
-    
-            </script>
+
+    </script>
 </body>
+
 </html>

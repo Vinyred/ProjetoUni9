@@ -66,8 +66,16 @@ function editardados() {
         .then(response => response.json())
         .then(data => {
             if ('message' in data) {
-                carregara();
-                throw new Error(data['message']);
+                if (data['message'] == 'User Successfully Updated') {
+                    alert('Usuário atualizado com sucesso')
+                    window.location.href = 'task.html';
+                } else if (data['message'] == 'Incorrect username and/or password') {
+                    alert('Nome de usuário e/ou senha incorretos')
+                }
+                else {
+                    alert(data['message'])
+                    throw new Error(data['message']);
+                }
             } else {
                 console.log(data);
                 alert("Editado com sucesso!");
@@ -105,6 +113,7 @@ function editaruser() {
                 if ('message' in data) {
                     if (data['message'] == 'User/password Successfully Updated') {
                         alert('Usuário atualizado com sucesso')
+                        window.location.href = 'task.html';
                     } else if (data['message'] == 'Incorrect username and/or password') {
                         alert('Nome de usuário e/ou senha incorretos')
                     }
@@ -149,5 +158,8 @@ function filtrarDados() {
     return true;
 }
 
-// Chamar a função para carregar os dados do usuário
+function voltar() {
+    window.location.href = "task.html"
+    
 
+}
