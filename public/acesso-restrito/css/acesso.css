@@ -1,6 +1,3 @@
-
-
-
 #container-login , #container-login2 {
     background-color: rgb(188, 189, 190);
      width: 400px;
@@ -22,7 +19,7 @@
      margin-bottom: 40px;
  }
  
- label, input#nomescad , input#senhacad , input#emailcad {
+ label, input[type=text], input[type=password]{
     
      display: block;
      width: 100%;
@@ -34,20 +31,25 @@
      font-weight: bold;
  }
  
- input#nomescad , input#senhacad ,input#emailcad{
+ input[type=text], input[type=password]{
     border: 2px #323232 ;
      padding: 10px;
      margin-bottom: 20px ;
      box-shadow: 2px 2px 2px black;
  }
  
+ input[readonly] {
+    background-color: gainsboro;
+
+ }
+
  input:focus {
      border-bottom: #08558b;
  
  }
  
  
- input#nomescad , input#senhacad , input#senhadescad , input#nomesdescad, input#emailcad{
+ input[type=text], input[type=password]{
      border-radius: 10px;
  }
  
