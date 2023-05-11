@@ -5,10 +5,11 @@ let token = localStorage.getItem("token");
 var nomeg = localStorage.getItem("nameg");
 var navnome = document.getElementById("navnome");
 
-navnome.innerText = nomeg;
+
 let tasks = [];
 
 function carregarLista() {
+    navnome.innerText = nomeg;
     const url = 'https://todolist-api.edsonmelo.com.br/api/task/search/';
 
     const headers = { 'Content-type': 'application/json', 'Authorization': token };

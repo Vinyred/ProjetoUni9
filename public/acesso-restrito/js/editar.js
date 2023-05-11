@@ -68,6 +68,7 @@ function editardados() {
             if ('message' in data) {
                 if (data['message'] == 'User Successfully Updated') {
                     alert('Usuário atualizado com sucesso')
+                    localStorage.setItem("nameg", nome);
                     window.location.href = 'task.html';
                 } else if (data['message'] == 'Incorrect username and/or password') {
                     alert('Nome de usuário e/ou senha incorretos')
@@ -160,6 +161,6 @@ function filtrarDados() {
 
 function voltar() {
     window.location.href = "task.html"
-    
+
 
 }
